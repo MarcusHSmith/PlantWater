@@ -9,13 +9,55 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var store = PlantStore()
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List {
+                Section {
+                    Button(action: addPlant) {
+                        Text("Add Plant")
+                    }
+                }
+                Section {
+                    ForEach(store.plants) { plant in
+                        PlantCell(plant: plant)
+                    }
+                    .onDelete(perform: delete)
+                }
+            .navigationBarTitle("Plants")
+            }
+        }
+    }
+    
+    func addPlant() {
+        store.plants.append(Plant(name: "New Plant", daysBetweenWater: 99, cupsOfWater: 100))
+    }
+    
+    func delete(at offsets: IndexSet) {
+        store.plants.remove(atOffsets: offsets)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(store: PlantStore(plants: testData))
+    }
+}
+
+struct PlantCell: View {
+    let plant: Plant
+    var body: some View {
+        NavigationLink(destination: PlantDetails(plant: plant)){
+            HStack{
+                Image(systemName: "photo")
+                VStack(alignment: .leading) {
+                    Text(plant.name)
+                    Text("water button")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
     }
 }

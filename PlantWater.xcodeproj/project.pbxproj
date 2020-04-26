@@ -14,6 +14,9 @@
 		2C18886E2456098500D5FBC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C18886D2456098500D5FBC5 /* Assets.xcassets */; };
 		2C1888712456098500D5FBC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1888702456098500D5FBC5 /* Preview Assets.xcassets */; };
 		2C1888742456098500D5FBC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1888722456098500D5FBC5 /* LaunchScreen.storyboard */; };
+		2C18887C24560ADE00D5FBC5 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18887B24560ADE00D5FBC5 /* Plant.swift */; };
+		2C18887E2456106F00D5FBC5 /* PlantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18887D2456106F00D5FBC5 /* PlantDetails.swift */; };
+		2C188880245613AE00D5FBC5 /* PlantStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18887F245613AE00D5FBC5 /* PlantStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		2C1888702456098500D5FBC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2C1888732456098500D5FBC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C1888752456098500D5FBC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C18887B24560ADE00D5FBC5 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		2C18887D2456106F00D5FBC5 /* PlantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetails.swift; sourceTree = "<group>"; };
+		2C18887F245613AE00D5FBC5 /* PlantStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				2C1888752456098500D5FBC5 /* Info.plist */,
 				2C1888682456098400D5FBC5 /* PlantWater.xcdatamodeld */,
 				2C18886F2456098500D5FBC5 /* Preview Content */,
+				2C18887B24560ADE00D5FBC5 /* Plant.swift */,
+				2C18887D2456106F00D5FBC5 /* PlantDetails.swift */,
+				2C18887F245613AE00D5FBC5 /* PlantStore.swift */,
 			);
 			path = PlantWater;
 			sourceTree = "<group>";
@@ -150,7 +159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1888652456098400D5FBC5 /* AppDelegate.swift in Sources */,
+				2C188880245613AE00D5FBC5 /* PlantStore.swift in Sources */,
 				2C18886A2456098400D5FBC5 /* PlantWater.xcdatamodeld in Sources */,
+				2C18887E2456106F00D5FBC5 /* PlantDetails.swift in Sources */,
+				2C18887C24560ADE00D5FBC5 /* Plant.swift in Sources */,
 				2C18886C2456098400D5FBC5 /* ContentView.swift in Sources */,
 				2C1888672456098400D5FBC5 /* SceneDelegate.swift in Sources */,
 			);
