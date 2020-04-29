@@ -10,20 +10,23 @@ import Foundation
 import SwiftUI
 
 class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    @EnvironmentObject var store: PlantStore
     
     @Binding var isShown: Bool
-    @Binding var image: Image?
     
-    init(isShown: Binding<Bool>, image: Binding<Image?>) {
+    var index: Int
+    
+    init(isShown: Binding<Bool>, store: EnvironmentObject<PlantStore>, index: Int) {
         _isShown = isShown
-        _image = image
+        _store = store
+        self.index = index
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        image = Image(uiImage: uiImage)
         isShown = false
+        store.plants[index].image = Image(uiImage: uiImage)
         
     }
     
@@ -34,16 +37,18 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 }
 
 struct ImagePicker: UIViewControllerRepresentable {
+    @EnvironmentObject var store: PlantStore
     
     @Binding var isShown: Bool
-    @Binding var image: Image?
+    
+    var index: Int
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
         
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image)
+        return ImagePickerCoordinator(isShown: $isShown, store: _store, index: index)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {

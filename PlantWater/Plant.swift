@@ -16,6 +16,7 @@ struct Plant: Identifiable
     var thumbnailName: String {return name + "Thumb" }
     var daysBetweenWater: Int
     var cupsOfWater: Double
+    var image: Image?
 }
 
 #if DEBUG

@@ -20,8 +20,9 @@ struct ContentView: View {
                     }
                 }
                 Section {
+//                    ForEach(store.plants) { (plant) in
                     ForEach(store.plants) { plant in
-                        PlantCell(plant: plant)
+                        PlantCell(plant: plant).environmentObject(self.store)
                     }
                     .onDelete(perform: delete)
                 }
@@ -47,18 +48,30 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct PlantCell: View {
-    let plant: Plant
+    @EnvironmentObject var store: PlantStore
+    
+    var plant: Plant
+
     var body: some View {
-        NavigationLink(destination: PlantDetails(plant: plant)){
+        NavigationLink(destination: PlantDetails(plant: plant).environmentObject(store)){
             HStack{
-                Image(systemName: "photo")
+                if (plant.image != nil) {
+                    plant.image?.resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .clipped()
+                } else {
+                    Image(systemName: "photo")
+                }
                 VStack(alignment: .leading) {
                     Text(plant.name)
                     Text("water button")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
+                
+                
             }
+            .frame(width: nil, height: 50.0, alignment: .center)
         }
     }
 }

@@ -9,19 +9,21 @@
 import SwiftUI
 
 struct PhotoCaptureView: View {
+    @EnvironmentObject var store: PlantStore
     
     @Binding var showImagePicker: Bool
-    @Binding var image: Image?
+    
+    var index: Int
     
     var body: some View {
-        ImagePicker(isShown: $showImagePicker, image: $image)
+        ImagePicker(isShown: $showImagePicker, index: index).environmentObject(store)
     }
 }
 
 #if DEBUG
 struct PhotoCaptureView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoCaptureView(showImagePicker: .constant(false), image: .constant(Image("")))
+        PhotoCaptureView(showImagePicker: .constant(false), index: 1)
     }
 }
 #endif
