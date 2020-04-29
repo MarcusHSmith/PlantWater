@@ -12,7 +12,7 @@ struct Plant: Identifiable
 {
     var id = UUID()
     var name: String
-    var imageName: String {return name }
+    var imageName: String { return name }
     var thumbnailName: String {return name + "Thumb" }
     var daysBetweenWater: Int
     var cupsOfWater: Double
