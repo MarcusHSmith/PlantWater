@@ -25,9 +25,9 @@ struct ContentView: View {
                     }
                     .onDelete(perform: delete)
                 }
-            .navigationBarTitle("Plants")
             }
             .listStyle(GroupedListStyle())
+            .navigationBarTitle("Plants")
         }
     }
     
