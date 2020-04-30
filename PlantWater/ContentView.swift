@@ -20,8 +20,9 @@ struct ContentView: View {
                     }
                 }
                 Section {
-//                    ForEach(store.plants) { (plant) in
-                    ForEach(store.plants) { plant in
+                    ForEach(store.plants.sorted(by: { (a, b) -> Bool in
+                        return a.nextWater < b.nextWater
+                    })) { plant in
                         PlantCell(plant: plant).environmentObject(self.store)
                     }
                     .onDelete(perform: delete)
@@ -33,7 +34,7 @@ struct ContentView: View {
     }
     
     func addPlant() {
-        store.plants.append(Plant(name: "New Plant", daysBetweenWater: 99, cupsOfWater: 100))
+        store.plants.append(Plant(name: "New Plant", daysBetweenWater: 7, cupsOfWater: 100))
     }
     
     func delete(at offsets: IndexSet) {

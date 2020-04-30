@@ -12,6 +12,7 @@ struct PhotoCaptureView: View {
     @EnvironmentObject var store: PlantStore
     
     @Binding var showImagePicker: Bool
+//    @Binding var $isSheetsPresented: Bool
     
     var index: Int
     

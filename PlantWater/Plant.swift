@@ -12,11 +12,15 @@ struct Plant: Identifiable
 {
     var id = UUID()
     var name: String
-    var imageName: String { return name }
-    var thumbnailName: String {return name + "Thumb" }
     var daysBetweenWater: Int
     var cupsOfWater: Double
     var image: Image?
+    var lastWater: Date = Date()
+    
+    var nextWater: Date {
+        let timeInterval: TimeInterval = TimeInterval(daysBetweenWater * 24*60*60)
+        return lastWater.addingTimeInterval(timeInterval)
+    }
 }
 
 #if DEBUG
