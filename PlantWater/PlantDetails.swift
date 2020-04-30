@@ -11,35 +11,30 @@ import SwiftUI
 struct PlantDetails: View {
     @EnvironmentObject var store: PlantStore
     
-    let plant: Plant
+    var plant: Plant
     
     private var plantIndex: Int {
         store.plants.firstIndex(where: { $0.id == plant.id })!
     }
     
     @State private var showImagePicker: Bool = false
-    @State private var editDaysBetweenWater: Bool = false
-    
-    @State private var isSheetsPresented: Bool = false
-    
-    
+    @State private var daysUntilNextWater: Int?
     
     var body: some View {
-            VStack {
+        VStack {
+            VStack(alignment: .leading) {
                 Text("\(plant.cupsOfWater) cups of water")
                 Text("\(plant.daysBetweenWater) days between water")
-                Button(action: {
-                    self.isSheetsPresented = true
-                    self.editDaysBetweenWater = true
-                }) {
-                    Text("\(plant.daysBetweenWater) days between water")
-                }
-                
-                
+                TextField("Edit Days", value: $daysUntilNextWater, formatter: NumberFormatter(), onCommit: {
+                    if let daysUntilNextWater = self.daysUntilNextWater {
+                        self.store.plants[self.plantIndex].daysBetweenWater = daysUntilNextWater
+                    }
+                })
                 Text("Next water on \(plant.nextWater)")
-                plant.image?.resizable().scaledToFit()
+            }
+            VStack {
+                plant.image?.resizable().scaledToFit().padding()
                 Button(action: {
-                    self.isSheetsPresented = true
                     self.showImagePicker = true
                 }) {
                     HStack{
@@ -47,20 +42,14 @@ struct PlantDetails: View {
                             .font(.title)
                     }
                 }
+                Spacer()
             }
-                .sheet(isPresented: self.$isSheetsPresented, onDismiss: {
-                    self.isSheetsPresented = false
-                    print("DISMISS SHEET")
-                }) {
-                if (self.showImagePicker) {
+        }
+            .sheet(isPresented: self.$showImagePicker) {
                     PhotoCaptureView(showImagePicker: self.$showImagePicker, index: self.plantIndex).environmentObject(self.store)
-                } else if (self.editDaysBetweenWater) {
-                        EditValueView(plant: self.plant, editDaysBetweenWater: self.$editDaysBetweenWater).environmentObject(self.store)
-                    }
-            }
                 
+            }
             .navigationBarTitle(plant.name)
-        
     }
 }
 

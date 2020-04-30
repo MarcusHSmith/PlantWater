@@ -19,7 +19,6 @@
 		2C188880245613AE00D5FBC5 /* PlantStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18887F245613AE00D5FBC5 /* PlantStore.swift */; };
 		2C18888724564DF400D5FBC5 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18888624564DF400D5FBC5 /* PhotoCaptureView.swift */; };
 		2C18888924564E1400D5FBC5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18888824564E1400D5FBC5 /* ImagePicker.swift */; };
-		2CBF9B54245A61370071CAF6 /* EditValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF9B53245A61370071CAF6 /* EditValueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 		2C18888524564B5000D5FBC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2C18888624564DF400D5FBC5 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		2C18888824564E1400D5FBC5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		2CBF9B53245A61370071CAF6 /* EditValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 				2C18887F245613AE00D5FBC5 /* PlantStore.swift */,
 				2C18888624564DF400D5FBC5 /* PhotoCaptureView.swift */,
 				2C18888824564E1400D5FBC5 /* ImagePicker.swift */,
-				2CBF9B53245A61370071CAF6 /* EditValueView.swift */,
 			);
 			path = PlantWater;
 			sourceTree = "<group>";
@@ -169,7 +166,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CBF9B54245A61370071CAF6 /* EditValueView.swift in Sources */,
 				2C1888652456098400D5FBC5 /* AppDelegate.swift in Sources */,
 				2C188880245613AE00D5FBC5 /* PlantStore.swift in Sources */,
 				2C18888724564DF400D5FBC5 /* PhotoCaptureView.swift in Sources */,
