@@ -42,6 +42,11 @@ struct PlantDetails: View {
                             .font(.title)
                     }
                 }
+                Button(action: {
+                    self.store.plants[self.plantIndex].lastWater = Date()
+                }) {
+                    Text("WATERED")
+                }
                 Spacer()
             }
         }
