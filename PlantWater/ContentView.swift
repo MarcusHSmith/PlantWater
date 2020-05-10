@@ -6,6 +6,7 @@
 //  Copyright © 2020 marcusmth. All rights reserved.
 //
 
+import UserNotifications
 import SwiftUI
 
 struct ContentView: View {
@@ -35,10 +36,21 @@ struct ContentView: View {
     
     func addPlant() {
         store.plants.append(Plant(name: "New Plant", daysBetweenWater: 7, cupsOfWater: 100))
+        requestNotificationPermission()
     }
     
     func delete(at offsets: IndexSet) {
         store.plants.remove(atOffsets: offsets)
+    }
+    
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2020 marcusmth. All rights reserved.
 //
 
+import UserNotifications
 import SwiftUI
 
 struct PlantDetails: View {
@@ -28,6 +29,7 @@ struct PlantDetails: View {
                 TextField("Edit Days", value: $daysUntilNextWater, formatter: NumberFormatter(), onCommit: {
                     if let daysUntilNextWater = self.daysUntilNextWater {
                         self.store.plants[self.plantIndex].daysBetweenWater = daysUntilNextWater
+                        self.updateNotification()
                     }
                 })
                 Text("Next water on \(plant.nextWater)")
@@ -42,6 +44,12 @@ struct PlantDetails: View {
                             .font(.title)
                     }
                 }
+                Button(action: {
+                    self.store.plants[self.plantIndex].lastWater = Date()
+                    self.updateNotification()
+                }) {
+                    Text("WATERED")
+                }
                 Spacer()
             }
         }
@@ -50,6 +58,17 @@ struct PlantDetails: View {
                 
             }
             .navigationBarTitle(plant.name)
+    }
+    
+    private func updateNotification() {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plant.id.uuidString])
+        let content = UNMutableNotificationContent()
+        content.title = "\(plant.name) is thirsty"
+        content.subtitle = "It was last watered on \(plant.lastWater)"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: plant.nextWater.timeIntervalSinceNow, repeats: false)
+        let request = UNNotificationRequest(identifier: plant.id.uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
     }
 }
 
